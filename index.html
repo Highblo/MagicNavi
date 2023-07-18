@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MagicNavi</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Portfolio</a>
+      <a href="#">Team</a>
+      <a href="#">Contact</a>
+      <div id="indicator"></div>
+    </nav>
+    <script>
+      const marker = document.querySelector("#indicator");
+      const nav = document.querySelector("nav");
+      const item = document.querySelectorAll("nav a");
+
+      nav.addEventListener("click", () => {
+        marker.classList.toggle("change");
+      });
+
+      const indicator = (e) => {
+        marker.style.left = e.offsetLeft + "px";
+        marker.style.width = e.offsetWidth + "px";
+        marker.style.display = "block";
+        marker.style.filter = `hue-rotate(${Math.random() * 360}deg)`;
+      };
+
+      item.forEach((link) => {
+        link.addEventListener("click", (e) => {
+          indicator(e.target);
+        });
+      });
+    </script>
+  </body>
+</html>
